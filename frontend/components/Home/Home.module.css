@@ -1,0 +1,21 @@
+.homeContainer {
+    text-align: center;
+    padding: 50px;
+    color: #333;
+}
+
+.homeDescription {
+    margin-bottom: 20px;
+}
+
+.homeButton {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-right: 10px; /* add some space between the buttons */
+}
