@@ -1,0 +1,13 @@
+.column {
+    background-color: #e6e6fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 300px; /* Increased from 200px to 300px */
+    margin: 0 10px;
+  }
+
+.columnHeader {
+    color: #4b0082;
+    font-size: 1.5rem;
+}
