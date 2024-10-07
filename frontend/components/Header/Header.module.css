@@ -1,0 +1,32 @@
+.header {
+    background-color: #4b0082;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.logoutButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 15px;
+    background-color: #2d5f89;
+    border: none;
+    border-radius: 5px;
+}
+
+.addTaskButton {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #fff;
+    background-color: #5cb85c; /* Adjust the color if necessary */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
