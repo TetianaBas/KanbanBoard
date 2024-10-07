@@ -1,0 +1,41 @@
+.loginForm {
+    max-width: 320px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.loginInput,
+.loginButton,
+.signupButton {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.loginInput {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.loginButton {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signupButton {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
