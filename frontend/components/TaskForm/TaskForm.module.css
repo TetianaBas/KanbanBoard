@@ -1,0 +1,74 @@
+.taskForm {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.taskForm h2 {
+    text-align: center;
+}
+
+.taskForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+.taskForm label {
+    margin-top: 10px;
+}
+
+.taskForm input,
+.taskForm textarea,
+.taskForm select {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.taskForm input:focus,
+.taskForm textarea:focus,
+.taskForm select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.taskForm button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.taskForm button:hover {
+    background-color: #45a049;
+}
+
+.taskForm button:active {
+    background-color: #3e8e41;
+}
+
+@media (max-width: 600px) {
+    .taskForm {
+        padding: 10px;
+    }
+    .taskForm button {
+        padding: 10px;
+    }
+}
+
+.taskForm .error {
+    color: #ff0000;
+    margin-top: 5px;
+}
+
+.taskForm input.invalid,
+.taskForm textarea.invalid,
+.taskForm select.invalid {
+    border-color: #ff0000;
+}
