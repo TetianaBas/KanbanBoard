@@ -1,0 +1,101 @@
+// TaskForm.js
+import { useNavigate } from 'react-router-dom';
+import styles from './TaskForm.module.css';
+import { fetchTasks } from '../../services/taskService';
+import React, { useState, useEffect } from 'react';
+
+const TaskForm = () => {
+    const navigate = useNavigate();
+    const [tasks, setTasks] = useState([]);
+    const [selectedParentTaskId, setSelectedParentTaskId] = useState('');
+    const [selectedColumn, setSelectedColumn] = useState('');
+    const columns = ["To Do", "In Progress", "Review"]; 
+
+    useEffect(() => {
+        const loadTasks = async () => {
+            try {
+                const tasks = await fetchTasks();
+                setTasks(tasks);
+            } catch (error) {
+                console.error("Failed to load tasks:", error);
+                setTasks([]); // Set tasks to an empty array on error as a fallback
+            }
+        };
+        loadTasks();
+    }, []);
+
+    const handleColumnChange = (event) => {
+        setSelectedColumn(event.target.value); // Adjust for single selection
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        // Initialize an object to hold the new task details
+        let newTask = {
+            title: event.target.taskName.value,
+            status: selectedColumn, // Default status if no parent task
+            parent_id: selectedParentTaskId || null
+        };
+    
+        // If there is a parent task ID, set the new task's status to the parent's status
+        if (selectedParentTaskId) {
+            const parentTask = tasks.find(task => task.id.toString() === selectedParentTaskId);
+            newTask.status = parentTask ? parentTask.status : selectedColumn;
+        }
+    
+        try {
+            const response = await fetch('/add_task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Include other necessary headers, like authentication tokens if needed
+                },
+                body: JSON.stringify(newTask)
+            });
+    
+            if (response.ok) {
+                console.log('Task added successfully');
+                navigate('/board'); // Redirect after task creation
+            } else {
+                // Handle errors, for example, show an error message to the user
+                const errorData = await response.json();
+                console.error('Failed to add task:', errorData.message || 'Unknown error');
+            }
+        } catch (error) {
+            // Handle network errors, for example, show an error message to the user
+            console.error('Network error when adding task:', error);
+        }
+    };
+    
+    return (
+        <div className={styles.taskForm}>
+            <h2>Add New Task</h2>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="taskName">Task Name:</label>
+                <input type="text" id="taskName" name="taskName" required />
+                <label htmlFor="parentTask">Parent Task:</label>
+                <select id="parentTask" name="parentTask" value={selectedParentTaskId} onChange={(e) => setSelectedParentTaskId(e.target.value)}>
+                    <option value="">No Parent (Top Level Task)</option>
+                    {tasks.map((task) => (
+                        <option key={task.id} value={task.id}>{task.title}</option>
+                    ))}
+                    
+                </select>
+
+                <label htmlFor="columns">Select Column:</label>
+                {!selectedParentTaskId && (
+                    <select id="columns" name="columns" value={selectedColumn} onChange={handleColumnChange} required>
+                        <option value="">Select a column</option>
+                        {columns.map((column) => (
+                            <option key={column} value={column}>{column}</option>
+                        ))}
+                    </select>
+                )}
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    );
+};
+
+export default TaskForm;
