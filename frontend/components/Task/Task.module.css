@@ -1,0 +1,107 @@
+.taskHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.taskDescription {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5px;
+
+}
+
+.taskButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ 
+}
+
+.collapseIcon {
+    transition: transform 0.3s ease;
+    padding-right: 5px;
+}
+
+.collapsed .collapseIcon {
+    transform: rotate(0deg);
+}
+
+.expanded .collapseIcon {
+    transform: rotate(90deg);
+}
+
+.subtasks {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.collapsed {
+    max-height: 0;
+}
+
+.expanded {
+    max-height: 500px;
+}
+
+.subtask {
+    padding-left: 20px; /* Indent subtasks */
+    border-left: 2px solid #eee; 
+    margin-top: 10px;
+}
+
+
+.task {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    /* To highlight a task on hover */
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}
+.taskActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.editButton {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #1245a8; 
+    margin-left: 10px; 
+}
+
+.deleteButton {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #ff6347; 
+    margin-left: 1px; 
+}
+
+.deleteButton:hover {
+    color: #ff0000;
+}
+
+.moveTask {
+    width: 100%;
+    padding: 5px 0px;
+}
+
+.moveDropdown {
+    width: 100%;
+    height: 30px;
+}
+
